@@ -11,3 +11,74 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.MathApp{
+  display:flex;
+  flex-direction: row;
+  align-items: left;
+  justify-content: space-between;
+  background-color: #F1E6d2;  
+}
+
+#logoname{
+  display: flex;
+}
+
+#welcome{
+  text-align: center;
+  font-size: xx-large;
+  margin:0;
+  margin-left: 10px;
+  padding: 10px 10px;
+}
+
+#logoImg{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 13%;
+  margin: 0;
+  margin-left: 5px;
+}
+
+#navigation ul{
+  padding: 0;
+  list-style: none;
+}
+
+#navigation ul li{
+  display: inline;
+}
+
+#navigation ul li a{
+  display: inline-block;
+  text-decoration: none;
+  font-size: large;
+  padding: 10px 15px;
+  font-weight: bold;
+  color:black;
+}
+
+#navigation ul li a:hover{
+  color:#891D1A;
+}
+
+.MathSubjects{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+#subject{
+  padding-left: 10px;
+}
+
+.about{
+  text-align: center;
+}
+
+@media only screen and (max-width:600px) {
+  #logoImg{
+    width:10%
+  }
+}
