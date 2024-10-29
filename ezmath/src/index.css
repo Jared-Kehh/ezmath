@@ -60,7 +60,28 @@ code {
 }
 
 #navigation ul li a:hover{
-  color:#891D1A;
+  color:#5E657B;
+}
+
+#about{
+  font-size: x-large;
+  padding-left: 10px;
+  background-color: #5E657B;
+  margin: 0;
+  color: white;
+}
+
+#aboutsec{
+  padding-right: 10px;
+  padding-top: 20px;
+  background-color: #5E657B;
+  margin: 0;
+  color: white;
+}
+
+a{
+  text-decoration: none;
+  color: black;
 }
 
 .MathSubjects{
@@ -71,10 +92,47 @@ code {
 
 #subject{
   padding-left: 10px;
+  margin: 0;
 }
+
+.dropbtn {
+  background-color: #5E657B;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: white;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  overflow: auto;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
 
 .about{
   text-align: center;
+}
+
+footer{
+  background-color: #F1E6d2;
+  padding: 10px;
 }
 
 @media only screen and (max-width:600px) {
