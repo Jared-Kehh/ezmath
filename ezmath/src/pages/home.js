@@ -38,22 +38,23 @@ function AppBody() {
       <div id='subject'>
         <h1>Addition</h1>
         <h3>This is a Math Adding Game!</h3>
-        <button class="dropbtn"><a href='#'>Play!</a></button>
+        {/* <button class="dropbtn"><Link to="/addition">Play!</Link></button> */}
+        <Link to="/addition"><li class="dropbtn">Addition</li></Link>
       </div>
       <div id='subject'>
         <h1>Subtraction</h1>
         <h3>This is a Math Subtracting Game!</h3>
-        <button class="dropbtn"><a href='#'>Play!</a></button>
+        <Link to="/subtraction"><li class="dropbtn">Subtraction</li></Link>
       </div>
       <div id='subject'>
         <h1>Multiplication</h1>
         <h3>This is a Math Multiplying Game!</h3>
-        <button class="dropbtn"><a href='#'>Play!</a></button>
+        <Link to="/multiplication"><li class="dropbtn">Multiplication</li></Link>
       </div>
       <div id='subject'>
         <h1>Division</h1>
         <h3>This is a Math Dividing Game!</h3>
-        <button class="dropbtn"><a href='#'>Play!</a></button>
+        <Link to="/division"><li class="dropbtn">Division</li></Link>
       </div>
 
     </div>

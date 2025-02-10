@@ -1,4 +1,5 @@
 import '../App.css';
+import '../styles/about.css';
 import logo from '../7121318-200.png';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -28,17 +29,28 @@ function AppBody() {
     return (
     <div className="AppBody">
       <div className="AppBodyContent">
-        <h1>App Body</h1>
+        <h1>About Us</h1>
       </div>
     </div>
   );
 };
+
+function AppFooter() {
+  return(
+    <footer>
+      <div className='about'>
+        {/* <h4>&copy; ezMath</h4> */}
+      </div>
+    </footer>
+  );
+}
 
 export function About() {
   return (
     <>
       <AppHeader />
       <AppBody />
+      <AppFooter />
     </>
   );
 }

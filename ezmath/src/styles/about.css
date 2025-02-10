@@ -1,0 +1,17 @@
+.AppBody{
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 800px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.AppBody h1{
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.AppBody p{
+    margin-bottom: 20px;
+}

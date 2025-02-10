@@ -1,4 +1,5 @@
 import '../App.css';
+import '../styles/register.css'
 import logo from '../7121318-200.png';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -23,10 +24,32 @@ function AppHeader() {
   );
 };
 
+function AppBody() {
+  return (
+    <body>
+      <div id="register">
+        <h1>Register</h1>
+      </div>
+    </body>
+  );
+};
+
+function AppFooter() {
+  return(
+    <footer>
+      <div className='about'>
+        {/* <h4>&copy; ezMath</h4> */}
+      </div>
+    </footer>
+  );
+}
+
 export function Register() {
   return (
     <>
     <AppHeader/>
+    <AppBody/>
+    <AppFooter/>
     </>
   );
 }
