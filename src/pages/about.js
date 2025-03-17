@@ -30,6 +30,10 @@ function AppBody() {
     <div className="AppBody">
       <div className="AppBodyContent">
         <h1>About Us</h1>
+        <p>ezMath is a simple and interactive math learning application designed to help users improve their math skills.</p>
+        <p>Our goal is to make learning math fun and engaging for everyone.</p>
+        <p>Whether you're a student looking to practice or an adult wanting to refresh your math knowledge, ezMath is here for you.</p>
+        <p>We provide a variety of math problems and interactive features to enhance your learning experience.</p>
       </div>
     </div>
   );

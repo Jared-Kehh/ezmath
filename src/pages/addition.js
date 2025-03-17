@@ -1,7 +1,8 @@
 import '../App.css';
 import '../styles/about.css';
 import logo from '../7121318-200.png';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import "../styles/addition.css";
 import { Link } from 'react-router-dom';
 
 function AppHeader() {
@@ -26,14 +27,114 @@ function AppHeader() {
 };
 
 function AppBody() {
+    const [num1, setNum1] = useState(0);
+    const [num2, setNum2] = useState(0);
+    const [userAnswer, setUserAnswer] = useState(null);
+    const [result, setResult] = useState('');
+    const [timeLeft, setTimeLeft] = useState(10);
+    const [options, setOptions] = useState([]);
+    const [score, setScore] = useState(0);
+
+    // Function to generate two random numbers
+    const generateNumbers = () => {
+        const newNum1 = Math.floor(Math.random() * 100) + 1;
+        const newNum2 = Math.floor(Math.random() * 100) + 1;
+        setNum1(newNum1);
+        setNum2(newNum2);
+        setResult('');
+        setUserAnswer(null);
+        setTimeLeft(10);
+        generateOptions(newNum1, newNum2);
+    };
+
+    // Function to generate multiple-choice options
+    const generateOptions = (num1, num2) => {
+        const correctAnswer = num1 + num2;
+        const options = [correctAnswer];
+
+        while (options.length < 4) {
+            const randomOffset = Math.floor(Math.random() * 20) - 10;
+            const randomAnswer = correctAnswer + randomOffset;
+
+            if (randomAnswer !== correctAnswer && randomAnswer >= 0 && !options.includes(randomAnswer)) {
+                options.push(randomAnswer);
+            }
+        }
+
+        setOptions(shuffleArray(options));
+    };
+
+    // Function to shuffle an array
+    const shuffleArray = (array) => {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    };
+
+    // Function to check the user's answer
+    const checkAnswer = (selectedAnswer) => {
+        const correctAnswer = num1 + num2;
+        if (selectedAnswer === correctAnswer) {
+            setResult('✅ Correct!');
+            setScore(score + 1);
+        } else {
+            setResult(`❌ Incorrect! The answer is ${correctAnswer}.`);
+        }
+        setTimeout(() => {
+            generateNumbers();
+        }, 1000);
+    };
+
+    // Timer logic
+    useEffect(() => {
+        if (timeLeft > 0) {
+            const timer = setTimeout(() => {
+                setTimeLeft(timeLeft - 1);
+            }, 1000);
+            return () => clearTimeout(timer);
+        } else {
+            setResult('⏰ Time’s up!');
+            setTimeout(() => {
+                generateNumbers();
+            }, 1000);
+        }
+    }, [timeLeft]);
+
+    // Generate the first question when the component mounts
+    useEffect(() => {
+        generateNumbers();
+    }, []);
+
     return (
-    <div className="AppBody">
-        <div className="AppBodyContent">
-            <h1>Addition</h1>
+        <div className="game-container">
+            <h1 className="game-title">Addition Game 🎮</h1>
+            <p className="scoreboard">Score: <span className="score">{score}</span></p>
+            
+            <div className="question-box">
+                <p>What is <span className="num">{num1}</span> + <span className="num">{num2}</span>?</p>
+                <div className="timer-bar" style={{ width: `${timeLeft * 10}%` }}></div>
+                <p className="time-left">Time left: {timeLeft}s</p>
+            </div>
+
+            <div className="options">
+                {options.map((option, index) => (
+                    <button
+                        key={index}
+                        className="option-button"
+                        onClick={() => checkAnswer(option)}
+                        disabled={userAnswer !== null}
+                    >
+                        {option}
+                    </button>
+                ))}
+            </div>
+
+            <p className="result">{result}</p>
         </div>
-    </div>
     );
-};
+}
 
 function AppFooter() {
     return(

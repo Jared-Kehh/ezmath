@@ -28,6 +28,13 @@ function AppBody() {
   return (
     <div className="AppBody">
       <h1>Login</h1>
+      <div className="login">
+        <form>
+          <input type="text" placeholder="Username" required/>
+          <input type="password" placeholder="Password" required/>
+          <button type="submit">Login</button>
+        </form>
+      </div>
     </div>
   );
 };
