@@ -1,5 +1,6 @@
 import '../App.css';
 import '../styles/about.css';
+import '../styles/game.css';
 import logo from '../7121318-200.png';
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -32,22 +33,24 @@ function AppBody() {
     const [result, setResult] = useState('');
     const [timeLeft, setTimeLeft] = useState(10);
     const [options, setOptions] = useState([]);
-    const [score, setScore] = useState(0); // NEW: Score counter
+    const [score, setScore] = useState(0);
 
     // Function to generate two random numbers
     const generateNumbers = () => {
-        const newNum1 = Math.floor(Math.random() * 100) + 1;
-        const newNum2 = Math.floor(Math.random() * 100) + 1;
-
-        // Ensure num1 is always greater than num2 to avoid negative results
-        const [larger, smaller] = newNum1 > newNum2 ? [newNum1, newNum2] : [newNum2, newNum1];
-
-        setNum1(larger);
-        setNum2(smaller);
+        let newNum1 = Math.floor(Math.random() * 100) + 1;
+        let newNum2 = Math.floor(Math.random() * 100) + 1;
+        
+        // Ensure num1 is greater than or equal to num2 to avoid negative results
+        if (newNum2 > newNum1) {
+            [newNum1, newNum2] = [newNum2, newNum1];
+        }
+        
+        setNum1(newNum1);
+        setNum2(newNum2);
         setResult('');
         setUserAnswer(null);
         setTimeLeft(10);
-        generateOptions(larger, smaller);
+        generateOptions(newNum1, newNum2);
     };
 
     // Function to generate multiple-choice options
@@ -55,17 +58,15 @@ function AppBody() {
         const correctAnswer = num1 - num2;
         const options = [correctAnswer];
 
-        // Generate 3 random incorrect answers
         while (options.length < 4) {
             const randomOffset = Math.floor(Math.random() * 20) - 10;
             const randomAnswer = correctAnswer + randomOffset;
 
-            if (randomAnswer !== correctAnswer && randomAnswer >= 0 && !options.includes(randomAnswer)) {
+            if (randomAnswer !== correctAnswer && !options.includes(randomAnswer)) {
                 options.push(randomAnswer);
             }
         }
 
-        // Shuffle the options
         setOptions(shuffleArray(options));
     };
 
@@ -82,10 +83,10 @@ function AppBody() {
     const checkAnswer = (selectedAnswer) => {
         const correctAnswer = num1 - num2;
         if (selectedAnswer === correctAnswer) {
-            setResult('Correct! 🎉');
-            setScore(score + 1); // NEW: Increment score
+            setResult('✅ Correct!');
+            setScore(score + 1);
         } else {
-            setResult(`Incorrect. The correct answer is ${correctAnswer}.`);
+            setResult(`❌ Incorrect! The answer is ${correctAnswer}.`);
         }
         setTimeout(() => {
             generateNumbers();
@@ -100,7 +101,7 @@ function AppBody() {
             }, 1000);
             return () => clearTimeout(timer);
         } else {
-            setResult('Time’s up! ⏰');
+            setResult('⏰ Time’s up!');
             setTimeout(() => {
                 generateNumbers();
             }, 1000);
@@ -113,28 +114,33 @@ function AppBody() {
     }, []);
 
     return (
-        <div className="AppBody">
-            <div className="AppBodyContent">
-                <h1>Subtraction</h1>
-                <p><strong>Score: {score}</strong></p> {/* NEW: Display score */}
-                <p>What is {num1} - {num2}?</p>
-                <p>Time left: {timeLeft} seconds</p>
-                <div className="options">
-                    {options.map((option, index) => (
-                        <button
-                            key={index}
-                            onClick={() => checkAnswer(option)}
-                            disabled={userAnswer !== null}
-                        >
-                            {option}
-                        </button>
-                    ))}
-                </div>
-                <p>{result}</p>
+        <div className="game-container">
+            <h1 className="game-title">Subtraction Game 🎮</h1>
+            <p className="scoreboard">Score: <span className="score">{score}</span></p>
+            
+            <div className="question-box">
+                <p>What is <span className="num">{num1}</span> - <span className="num">{num2}</span>?</p>
+                <div className="timer-bar" style={{ width: `${timeLeft * 10}%` }}></div>
+                <p className="time-left">Time left: {timeLeft}s</p>
             </div>
+
+            <div className="options">
+                {options.map((option, index) => (
+                    <button
+                        key={index}
+                        className="option-button"
+                        onClick={() => checkAnswer(option)}
+                        disabled={userAnswer !== null}
+                    >
+                        {option}
+                    </button>
+                ))}
+            </div>
+
+            <p className="result">{result}</p>
         </div>
     );
-};
+}
 
 function AppFooter() {
     return(

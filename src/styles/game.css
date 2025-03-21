@@ -1,39 +1,41 @@
 /* Game Container */
 .game-container {
     text-align: center;
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #f4a261, #2a9d8f);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    background-color: #F1E6D2;
     padding: 30px;
     border-radius: 15px;
     max-width: 500px;
     margin: 20px auto;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 10px 20px rgba(94, 101, 123, 0.3); /* using accent color in shadow */
 }
 
 /* Title */
 .game-title {
     font-size: 28px;
     font-weight: bold;
-    color: #ffffff;
+    color: #5E657B;
     margin-bottom: 15px;
 }
 
 /* Scoreboard */
 .scoreboard {
     font-size: 20px;
-    color: #fff;
+    color: #5E657B;
     margin-bottom: 10px;
 }
 
 .score {
     font-weight: bold;
     font-size: 24px;
-    color: #ffcc00;
+    color: #D4A017; /* warmer gold */
 }
 
 /* Question Box */
 .question-box {
-    background: #264653;
+    background-color: #5E657B;
     padding: 15px;
     border-radius: 10px;
     color: white;
@@ -46,13 +48,13 @@
 .num {
     font-size: 26px;
     font-weight: bold;
-    color: #ffcc00;
+    color: #FFD700;
 }
 
 /* Timer Bar */
 .timer-bar {
     height: 10px;
-    background: #ffcc00;
+    background: #D4A017;
     margin-top: 5px;
     transition: width 1s linear;
     border-radius: 5px;
@@ -61,12 +63,12 @@
 /* Time Left */
 .time-left {
     font-size: 16px;
-    color: white;
+    color: #5E657B;
 }
 
 /* Option Buttons */
 .option-button {
-    background: #e76f51;
+    background-color: #5E657B;
     color: white;
     font-size: 18px;
     font-weight: bold;
@@ -79,8 +81,8 @@
 }
 
 .option-button:hover {
-    background: #f4a261;
-    transform: scale(1.1);
+    background-color: #73788d;
+    transform: scale(1.05);
 }
 
 .option-button:disabled {
@@ -93,4 +95,5 @@
     font-size: 22px;
     font-weight: bold;
     margin-top: 15px;
+    color: #5E657B;
 }

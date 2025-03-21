@@ -2,7 +2,7 @@ import '../App.css';
 import '../styles/about.css';
 import logo from '../7121318-200.png';
 import React, { useState, useEffect } from 'react';
-import "../styles/addition.css";
+import "../styles/game.css";
 import { Link } from 'react-router-dom';
 
 function AppHeader() {
