@@ -35,12 +35,10 @@ function AppBody() {
     const [options, setOptions] = useState([]);
     const [score, setScore] = useState(0);
 
-    // Function to generate two random numbers
     const generateNumbers = () => {
         let newNum1 = Math.floor(Math.random() * 100) + 1;
         let newNum2 = Math.floor(Math.random() * 100) + 1;
-        
-        // Ensure num1 is greater than or equal to num2 to avoid negative results
+
         if (newNum2 > newNum1) {
             [newNum1, newNum2] = [newNum2, newNum1];
         }
@@ -53,7 +51,6 @@ function AppBody() {
         generateOptions(newNum1, newNum2);
     };
 
-    // Function to generate multiple-choice options
     const generateOptions = (num1, num2) => {
         const correctAnswer = num1 - num2;
         const options = [correctAnswer];
@@ -70,7 +67,6 @@ function AppBody() {
         setOptions(shuffleArray(options));
     };
 
-    // Function to shuffle an array
     const shuffleArray = (array) => {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -79,7 +75,6 @@ function AppBody() {
         return array;
     };
 
-    // Function to check the user's answer
     const checkAnswer = (selectedAnswer) => {
         const correctAnswer = num1 - num2;
         if (selectedAnswer === correctAnswer) {
@@ -93,7 +88,6 @@ function AppBody() {
         }, 1000);
     };
 
-    // Timer logic
     useEffect(() => {
         if (timeLeft > 0) {
             const timer = setTimeout(() => {
@@ -108,7 +102,6 @@ function AppBody() {
         }
     }, [timeLeft]);
 
-    // Generate the first question when the component mounts
     useEffect(() => {
         generateNumbers();
     }, []);

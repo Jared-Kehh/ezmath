@@ -35,7 +35,7 @@ function AppBody() {
     const [options, setOptions] = useState([]);
     const [score, setScore] = useState(0);
 
-    // Generate two numbers for division
+
     const generateNumbers = () => {
         const divisor = Math.floor(Math.random() * 12) + 1; // num2
         const quotient = Math.floor(Math.random() * 12) + 1;
@@ -49,7 +49,6 @@ function AppBody() {
         generateOptions(dividend, divisor);
     };
 
-    // Generate multiple-choice options
     const generateOptions = (num1, num2) => {
         const correctAnswer = num1 / num2;
         const options = [correctAnswer];
@@ -71,7 +70,6 @@ function AppBody() {
         setOptions(shuffleArray(options));
     };
 
-    // Shuffle array utility
     const shuffleArray = (array) => {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -80,7 +78,6 @@ function AppBody() {
         return array;
     };
 
-    // Check user's answer
     const checkAnswer = (selectedAnswer) => {
         const correctAnswer = num1 / num2;
         setUserAnswer(selectedAnswer);
@@ -97,7 +94,6 @@ function AppBody() {
         }, 1000);
     };
 
-    // Timer logic
     useEffect(() => {
         if (timeLeft > 0) {
             const timer = setTimeout(() => {
@@ -112,7 +108,6 @@ function AppBody() {
         }
     }, [timeLeft]);
 
-    // Generate first question
     useEffect(() => {
         generateNumbers();
     }, []);
