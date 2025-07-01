@@ -26,19 +26,17 @@ function AppHeader() {
 
 function AppBody() {
   return (
-    <body>
-      <div id="register">
+      <div className="AppBody">
         <h1>Register</h1>
-        <div className="register">
+        <div className="register-container">
           <form>
             <input type="text" placeholder="Username" required/>
             <input type="email" placeholder="Email" required/>
-            <input type="password" placeholder="Password" required/>
+            <input type="password" placeholder="Password" required/>  
             <button type="submit">Register</button>
           </form>
         </div>
       </div>
-    </body>
   );
 };
 
